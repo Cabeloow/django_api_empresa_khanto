@@ -1,7 +1,7 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import status
-from utils.validations import valida_ids_get
+from utils.validations import *
 from .serializer import ReservaSerializer
 from base.models import Reserva
 from datetime import datetime
@@ -37,16 +37,8 @@ def add_reserva(request):
         # Recuperar os dados da reserva da requisição
         dados_reserva = request.data
 
-        # Converter as strings de data em objetos de data
-        datetime_checkin = datetime.strptime(
-            dados_reserva["data_checkin"], "%Y-%m-%d"
-        ).date()
-        datetime_checkout = datetime.strptime(
-            dados_reserva["data_checkout"], "%Y-%m-%d"
-        ).date()
-
-        # Verificar se a data de Check-Out é posterior à data de Check-In
-        if datetime_checkout < datetime_checkin:
+        checkin_maior_checkout = valida_data_checkin_checkout(dados_reserva)
+        if checkin_maior_checkout == True:
             return Response(
                 data={
                     "error": "A data de Check-Out não pode ser inferior a data de Check-In"
@@ -56,6 +48,35 @@ def add_reserva(request):
 
         # Validar os dados da reserva usando o serializer
         serializer = ReservaSerializer(data=dados_reserva)
+
+        dict_campos_obrigatorios = {
+            "cod_anuncio": int,
+            "data_checkin": str,
+            "data_checkout": str,
+            "preco_total": float,
+            "comentario": str,
+            "numero_hospedes": int,
+        }
+        campos_faltantes = valida_campos_obrigatorios(
+            dict_campos_obrigatorios.keys(), request.data.keys()
+        )
+        if campos_faltantes:
+            # Se os dados forem inválidos, retornar uma resposta de erro
+            return Response(
+                data={
+                    "error": f"Os campos a seguir são obrigatórios e não foram preenchidos.\
+                    {str(list(campos_faltantes))[1:][:-1]}"
+                },
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        tipos_incorretos = valida_var_tipos(dict_campos_obrigatorios, request.data)
+        if tipos_incorretos:
+            return Response(
+                data={"error": tipos_incorretos},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
         if serializer.is_valid():
             # Se os dados forem válidos, salvar a reserva
             serializer.save()
@@ -99,6 +120,16 @@ def get_reservas(request):
         param = request.query_params.get("id", None)
 
         registros = valida_ids_get(Reserva, param)
+        if param == None and not registros:
+            return Response(
+                data={"error": "Opa! Não há nenhum registro de reservas salvo."},
+                status=status.HTTP_404_NOT_FOUND,
+            )
+        elif param != None and not registros:
+            return Response(
+                data={"error": "Opa! Não há nenhum registro de reservas com esse ID."},
+                status=status.HTTP_404_NOT_FOUND,
+            )
 
         # Serializar os registros de reserva
         serializer = ReservaSerializer(registros, many=True)
@@ -138,12 +169,17 @@ def del_reserva(request):
     try:
         # Obter o ID da reserva a ser deletada dos dados da requisição
         filtro = request.data
+        if "id" not in filtro.keys():
+            return Response(
+                data={"error": "O campo id é obrigatório para essa operação."},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
         # Filtrar o registro de reserva com base no ID fornecido
         registro = Reserva.objects.filter(id=filtro["id"])
         if not registro:
             return Response(
                 data={"error": f"id da reserva não encontrado"},
-                status=status.HTTP_400_BAD_REQUEST,
+                status=status.HTTP_404_NOT_FOUND,
             )
         # Deletar o registro de reserva
         result = registro.delete()

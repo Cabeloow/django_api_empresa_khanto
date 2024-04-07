@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "base",
     "rest_framework",
+    "api_imoveis",
+    "api_anuncios",
+    "api_reservas",
 ]
 
 MIDDLEWARE = [

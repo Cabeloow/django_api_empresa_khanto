@@ -1,6 +1,6 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from utils.validations import valida_ids_get
+from utils.validations import *
 from .serializer import ImovelSerializer
 from base.models import Imovel
 from rest_framework import status
@@ -36,6 +36,33 @@ def add_imovel(request):
     try:
         # Obter os dados do imóvel da requisição
         serializer = ImovelSerializer(data=request.data)
+        dict_campos_obrigatorios = {
+            "limite_hospedes": int,
+            "quantidade_banheiros": int,
+            "aceita_animais": bool,
+            "valor_limpeza": float,
+            "data_ativacao": str,
+        }
+        campos_faltantes = valida_campos_obrigatorios(
+            dict_campos_obrigatorios.keys(), request.data.keys()
+        )
+        if campos_faltantes:
+            # Se os dados forem inválidos, retornar uma resposta de erro
+            return Response(
+                data={
+                    "error": f"Os campos a seguir são obrigatórios e não foram preenchidos.\
+                    {str(list(campos_faltantes))[1:][:-1]}"
+                },
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        tipos_incorretos = valida_var_tipos(dict_campos_obrigatorios, request.data)
+        if tipos_incorretos:
+            return Response(
+                data={"error": tipos_incorretos},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
         if serializer.is_valid():
             # Se os dados forem válidos, salvar o imóvel
             serializer.save()
@@ -83,7 +110,16 @@ def get_imoveis(request):
         param = request.query_params.get("id", None)
 
         registros = valida_ids_get(Imovel, param)
-
+        if param == None and not registros:
+            return Response(
+                data={"error": "Opa! Não há nenhum registro de imoveis salvo."},
+                status=status.HTTP_404_NOT_FOUND,
+            )
+        elif param != None and not registros:
+            return Response(
+                data={"error": "Opa! Não há nenhum registro de imoveis com esse ID."},
+                status=status.HTTP_404_NOT_FOUND,
+            )
         # Serializar os registros de imóveis
         serializer = ImovelSerializer(registros, many=True)
 
@@ -115,19 +151,25 @@ def del_imovel(request):
         Um exemplo do formato esperado dos dados de deletar imovel:
 
         del_imovel_json_example = {
-            "id":1 int
+            "id":1 //int
         }
 
     """
     try:
         # Obter o ID do imóvel a ser deletado dos dados da requisição
         filtro = request.data
+        if "id" not in filtro.keys():
+            return Response(
+                data={"error": "O campo id é obrigatório para essa operação."},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
         # Filtrar o registro de imóvel com base no ID fornecido
         registro = Imovel.objects.filter(id=filtro["id"])
+
         if not registro:
             return Response(
-                data={"error": f"id do imóvel não encontrado."},
-                status=status.HTTP_400_BAD_REQUEST,
+                data={"error": "id do imóvel não encontrado."},
+                status=status.HTTP_404_NOT_FOUND,
             )
         result = registro.delete()
         # Retornar uma resposta indicando o resultado da operação de deleção
@@ -170,8 +212,42 @@ def alter_imovel(request):
     try:
         # Obter os dados do imóvel a ser alterado da requisição
         filtro = request.data
+        if "id" not in filtro.keys():
+            return Response(
+                data={"error": "O campo id é obrigatório para essa operação."},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
         # Obter o registro do imóvel a ser alterado com base no ID fornecido
         registro = Imovel.objects.get(id=filtro["id"])
+
+        dict_campos_validos = {
+            "limite_hospedes": int,
+            "quantidade_banheiros": int,
+            "aceita_animais": bool,
+            "valor_limpeza": float,
+            "data_ativacao": str,
+        }
+
+        # valida há campos invalidos no payload
+        campos_invalidos_imovel = valida_campos_validos(
+            dict_campos_validos.keys(), filtro["fields"].keys()
+        )
+
+        if campos_invalidos_imovel:
+            return Response(
+                data={
+                    "error": f"Registro não atualizado! Os campos a seguir não existem na tabela Imovel: {str(list(campos_invalidos_imovel))[1:][:-1]}. Campos permitidos: {str(list(dict_campos_validos))[1:][:-1]}"
+                },
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        # valida o tipo dos valores para cada campo, buscando tipos invalidos
+        tipos_incorretos = valida_var_tipos(dict_campos_validos, request.data["fields"])
+        if tipos_incorretos:
+            return Response(
+                data={"error": tipos_incorretos},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
 
         # Iterar sobre os campos a serem alterados
         for field in filtro["fields"].keys():
