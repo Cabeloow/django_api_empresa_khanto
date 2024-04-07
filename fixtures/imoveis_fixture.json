@@ -1,0 +1,122 @@
+[
+    {
+        "model": "base.Imovel",
+        "pk": 1,
+        "fields": {
+            "limite_hospedes": 4,
+            "quantidade_banheiros": 2,
+            "aceita_animais": true,
+            "valor_limpeza": 50.00,
+            "data_ativacao": "2024-04-01",
+            "data_atualizacao": "2024-04-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "base.Imovel",
+        "pk": 2,
+        "fields": {
+            "limite_hospedes": 6,
+            "quantidade_banheiros": 3,
+            "aceita_animais": false,
+            "valor_limpeza": 80.00,
+            "data_ativacao": "2024-04-05",
+            "data_atualizacao": "2024-04-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "base.Imovel",
+        "pk": 3,
+        "fields": {
+            "limite_hospedes": 4,
+            "quantidade_banheiros": 2,
+            "aceita_animais": true,
+            "valor_limpeza": 50.00,
+            "data_ativacao": "2024-04-01",
+            "data_atualizacao": "2024-04-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "base.Imovel",
+        "pk": 4,
+        "fields": {
+            "limite_hospedes": 6,
+            "quantidade_banheiros": 3,
+            "aceita_animais": false,
+            "valor_limpeza": 80.00,
+            "data_ativacao": "2024-04-05",
+            "data_atualizacao": "2024-04-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "base.Imovel",
+        "pk": 5,
+        "fields": {
+            "limite_hospedes": 4,
+            "quantidade_banheiros": 2,
+            "aceita_animais": true,
+            "valor_limpeza": 50.00,
+            "data_ativacao": "2024-04-01",
+            "data_atualizacao": "2024-04-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "base.Imovel",
+        "pk": 6,
+        "fields": {
+            "limite_hospedes": 6,
+            "quantidade_banheiros": 3,
+            "aceita_animais": false,
+            "valor_limpeza": 80.00,
+            "data_ativacao": "2024-04-05",
+            "data_atualizacao": "2024-04-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "base.Imovel",
+        "pk": 7,
+        "fields": {
+            "limite_hospedes": 4,
+            "quantidade_banheiros": 2,
+            "aceita_animais": true,
+            "valor_limpeza": 50.00,
+            "data_ativacao": "2024-04-01",
+            "data_atualizacao": "2024-04-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "base.Imovel",
+        "pk": 8,
+        "fields": {
+            "limite_hospedes": 6,
+            "quantidade_banheiros": 3,
+            "aceita_animais": false,
+            "valor_limpeza": 80.00,
+            "data_ativacao": "2024-04-05",
+            "data_atualizacao": "2024-04-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "base.Imovel",
+        "pk": 9,
+        "fields": {
+            "limite_hospedes": 4,
+            "quantidade_banheiros": 2,
+            "aceita_animais": true,
+            "valor_limpeza": 50.00,
+            "data_ativacao": "2024-04-01",
+            "data_atualizacao": "2024-04-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "base.Imovel",
+        "pk": 10,
+        "fields": {
+            "limite_hospedes": 6,
+            "quantidade_banheiros": 3,
+            "aceita_animais": false,
+            "valor_limpeza": 80.00,
+            "data_ativacao": "2024-04-05",
+            "data_atualizacao": "2024-04-01T00:00:00Z"
+        }
+    }
+]

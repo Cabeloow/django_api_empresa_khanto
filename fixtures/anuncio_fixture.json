@@ -1,0 +1,102 @@
+[
+    {
+        "model": "base.Anuncio",
+        "pk": 1,
+        "fields": {
+            "cod_imovel": 1,
+            "plataforma": "AirBnb",
+            "taxa_plataforma": 5.00,
+            "data_atualizacao": "2024-04-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "base.Anuncio",
+        "pk": 2,
+        "fields": {
+            "cod_imovel": 2,
+            "plataforma": "Booking",
+            "taxa_plataforma": 6.00,
+            "data_atualizacao": "2024-04-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "base.Anuncio",
+        "pk": 3,
+        "fields": {
+            "cod_imovel": 1,
+            "plataforma": "AirBnb",
+            "taxa_plataforma": 5.00,
+            "data_atualizacao": "2024-04-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "base.Anuncio",
+        "pk": 4,
+        "fields": {
+            "cod_imovel": 2,
+            "plataforma": "Booking",
+            "taxa_plataforma": 6.00,
+            "data_atualizacao": "2024-04-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "base.Anuncio",
+        "pk": 5,
+        "fields": {
+            "cod_imovel": 1,
+            "plataforma": "AirBnb",
+            "taxa_plataforma": 5.00,
+            "data_atualizacao": "2024-04-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "base.Anuncio",
+        "pk": 6,
+        "fields": {
+            "cod_imovel": 2,
+            "plataforma": "Booking",
+            "taxa_plataforma": 6.00,
+            "data_atualizacao": "2024-04-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "base.Anuncio",
+        "pk": 7,
+        "fields": {
+            "cod_imovel": 1,
+            "plataforma": "AirBnb",
+            "taxa_plataforma": 5.00,
+            "data_atualizacao": "2024-04-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "base.Anuncio",
+        "pk": 8,
+        "fields": {
+            "cod_imovel": 2,
+            "plataforma": "Booking",
+            "taxa_plataforma": 6.00,
+            "data_atualizacao": "2024-04-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "base.Anuncio",
+        "pk": 9,
+        "fields": {
+            "cod_imovel": 1,
+            "plataforma": "AirBnb",
+            "taxa_plataforma": 5.00,
+            "data_atualizacao": "2024-04-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "base.Anuncio",
+        "pk": 10,
+        "fields": {
+            "cod_imovel": 2,
+            "plataforma": "Booking",
+            "taxa_plataforma": 6.00,
+            "data_atualizacao": "2024-04-01T00:00:00Z"
+        }
+    }
+]

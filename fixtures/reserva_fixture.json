@@ -1,0 +1,132 @@
+[
+    {
+        "model": "base.Reserva",
+        "pk": 1,
+        "fields": {
+            "cod_anuncio": 1,
+            "data_checkin": "2024-04-20",
+            "data_checkout": "2024-04-23",
+            "preco_total": 25.99,
+            "comentario": "meu comentario",
+            "numero_hospedes": 1,
+            "data_atualizacao": "2024-04-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "base.Reserva",
+        "pk": 2,
+        "fields": {
+            "cod_anuncio": 1,
+            "data_checkin": "2024-04-20",
+            "data_checkout": "2024-04-23",
+            "preco_total": 25.99,
+            "comentario": "meu comentario",
+            "numero_hospedes": 1,
+            "data_atualizacao": "2024-04-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "base.Reserva",
+        "pk": 3,
+        "fields": {
+            "cod_anuncio": 2,
+            "data_checkin": "2024-04-20",
+            "data_checkout": "2024-04-23",
+            "preco_total": 25.99,
+            "comentario": "meu comentario",
+            "numero_hospedes": 1,
+            "data_atualizacao": "2024-04-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "base.Reserva",
+        "pk": 4,
+        "fields": {
+            "cod_anuncio": 2,
+            "data_checkin": "2024-04-20",
+            "data_checkout": "2024-04-23",
+            "preco_total": 25.99,
+            "comentario": "meu comentario",
+            "numero_hospedes": 1,
+            "data_atualizacao": "2024-04-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "base.Reserva",
+        "pk": 5,
+        "fields": {
+            "cod_anuncio": 2,
+            "data_checkin": "2024-04-20",
+            "data_checkout": "2024-04-23",
+            "preco_total": 25.99,
+            "comentario": "meu comentario",
+            "numero_hospedes": 1,
+            "data_atualizacao": "2024-04-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "base.Reserva",
+        "pk": 6,
+        "fields": {
+            "cod_anuncio": 5,
+            "data_checkin": "2024-04-20",
+            "data_checkout": "2024-04-23",
+            "preco_total": 25.99,
+            "comentario": "meu comentario",
+            "numero_hospedes": 1,
+            "data_atualizacao": "2024-04-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "base.Reserva",
+        "pk": 7,
+        "fields": {
+            "cod_anuncio": 5,
+            "data_checkin": "2024-04-20",
+            "data_checkout": "2024-04-23",
+            "preco_total": 25.99,
+            "comentario": "meu comentario",
+            "numero_hospedes": 1,
+            "data_atualizacao": "2024-04-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "base.Reserva",
+        "pk": 8,
+        "fields": {
+            "cod_anuncio": 6,
+            "data_checkin": "2024-04-20",
+            "data_checkout": "2024-04-23",
+            "preco_total": 25.99,
+            "comentario": "meu comentario",
+            "numero_hospedes": 1,
+            "data_atualizacao": "2024-04-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "base.Reserva",
+        "pk": 9,
+        "fields": {
+            "cod_anuncio": 7,
+            "data_checkin": "2024-04-20",
+            "data_checkout": "2024-04-23",
+            "preco_total": 25.99,
+            "comentario": "meu comentario",
+            "numero_hospedes": 1,
+            "data_atualizacao": "2024-04-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "base.Reserva",
+        "pk": 10,
+        "fields": {
+            "cod_anuncio": 8,
+            "data_checkin": "2024-04-20",
+            "data_checkout": "2024-04-23",
+            "preco_total": 25.99,
+            "comentario": "meu comentario",
+            "numero_hospedes": 1,
+            "data_atualizacao": "2024-04-01T00:00:00Z"
+        }
+    }
+]
