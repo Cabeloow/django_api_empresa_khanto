@@ -33,7 +33,7 @@ Demonstração do uso do django rest framework para a criação de 3 APIs com fu
 ## API Imoveis
 
 - Cadastro:
-   - Rota: /imoveis/include_imovel/
+   - Rota: /imovel/include_imovel/
    - Método: POST
    - payload exemplo:
         ```
