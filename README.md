@@ -18,67 +18,81 @@ TODO
 
 - Python 3.11.9
 - Django REST Framework
-- 
+
 
 ## Instalação
 
-1. Clone o repositório: `https://github.com/Cabeloow/django_api_empresa_khanto.git`
-2. Na raiz do arquivo abra o cmd
-3. opcional: criar uma venv através do comando "python -m venv nome_da_venv"
-4. Instale as dependenicas necessárias com o comando "pip install -r requirements.txt"
-5. Para popular o banco de dados use os seguintes comandos:
+1. Clone o repositório: `https://github.com/Cabeloow/django_api_empresa_khanto.git`;
+2. Na raiz do arquivo abra o cmd;
+3. opcional: criar uma venv através do comando "python -m venv nome_da_venv";
+4. Instale as dependenicas necessárias com o comando "pip install -r requirements.txt";
+5. Execute o comando: py manage.py migrate;
+6. Para popular o banco de dados use os seguintes comandos:
    python manage.py loaddata fixtures\imoveis_fixture.json
    python manage.py loaddata fixtures\anuncio_fixture.json
    python manage.py loaddata fixtures\reserva_fixture.json
-6. Execute o servidor através do comando: py manage.py runserver
+7. Execute o servidor através do comando: py manage.py runserver
 
 ## Uso
 
-Rotas e payloads;
+#API Imoveis
 
-- Cadastro: 
-    - Método POST
-    - payload exemplo:
-        {"cpf": "99988877700", 
-        "dados_pessoa":{"nome":  "jp", "sobrenome": "silva", "idade": "20", "pais": "brasil"}}
-
-
-- Consulta: 
-    - Método GET
-    - Exemplo consulta:
-        para retornar um item específico:
-            caminho_da_api.com/desafio/consulta?cpf=99988877700
-
-        para retornar todos os itens:
-            caminho_da_api.com/desafio/consulta
+- Cadastro:
+   - Rota: /imoveis/include_imovel/
+   - Método: POST
+   - payload exemplo:
+        {
+            "limite_hospedes": 6, // int
+            "quantidade_banheiros": 2, // int
+            "aceita_animais": true, // boolean
+            "valor_limpeza": 10.05, // float
+            "data_ativacao": "2020-12-21" // string (data no formato americano YYYY-MM-DD)
+        }
 
 
-- Atualiza: 
-    - Método PATCH
-    - payload exemplo:
-        {"cpf":"99988877700", 
-        "update_itens":{"nome":  "jp", "idade": "3"}}
+- Consulta:
+   - Rota: /imoveis/get_imoveis
+   - Método: GET
+   - Exemplo consulta:
+        - para retornar UM ÚNICO item específico:
+            caminho_da_api.com/imoveis/get_imoveis?id=5
+ 
+        - para retornar DOIS OU MAIS itens específicos:
+            caminho_da_api.com/imoveis/get_imoveis?id=2,6,10
 
-- Delete: 
-    - Método DELETE
-    - payload exemplo:
-        {"cpf": "99988877700"}
+        - para retornar TODOS os itens:
+            caminho_da_api.com/imoveis/get_imoveis
+
+
+- Atualização:
+   - Rota: /imoveis/alter_imovel/
+   - Método: POST
+   - payload exemplo:
+        {
+            "id":1, // int (obrigatório)
+            "fields":{
+                "aceita_animais": false,
+                "valor_limpeza": 29.99,
+
+            }
+        }
+
+- Delete:
+   - Rota: /imoveis/delete_imovel/  
+   - Método DELETE
+   - payload exemplo:
+        {
+            "id":1 //int (obrigatório)
+        }
 
 ## Testes
 
-- Para executar os testes, na raiz do arquivo 
-1. import a biblioteca pytest
-1. Acesse a pasta "tests"
-2. Execute o comando python -m pytest test_backend.py -v
+- Para executar os testes, na raiz do arquivo execute os seguintes comandos no cmd:
+1. para rodar os testes: coverage run manage.py test
+2. Gerar relatório dos testes: coverage report
+3. (opcional): Para ter um relatório em uma página web digite: coverage html;
+   Um arquivo chamado "htmlcov" será criado na raiz do projeto, acesse-o e abra o arquivo "index.html".
 
-- Para executar o teste de cobertura.
-1. import a biblioteca coverage
-1. Acesse a pasta "tests"
-2. Execute os seguintes comandos:
-    - python -m coverage run meu_teste.py
-    - python -m coverage report -m
-    - python -m coverage html
-3. em seguida acesse o arquivo tests\htmlcov\index.html
 
 ## Contato
 
