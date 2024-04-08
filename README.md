@@ -71,7 +71,7 @@ Demonstração do uso do django rest framework para a criação de 3 APIs com fu
                }
            }
 - Delete:
-   - Rota: /imovel/delete_imovel/  
+   - Rota: /imovel/del_imovel/  
    - Método DELETE
    - payload exemplo:
      ```
@@ -145,7 +145,7 @@ Demonstração do uso do django rest framework para a criação de 3 APIs com fu
             caminho_da_api.com/reserva/get_reservas
 
 - Delete:
-   - Rota: /reserva/delete_reserva/  
+   - Rota: /reserva/del_reserva/  
    - Método DELETE
    - payload exemplo:
      ```
